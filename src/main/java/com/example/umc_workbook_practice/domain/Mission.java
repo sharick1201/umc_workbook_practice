@@ -1,10 +1,13 @@
 package com.example.umc_workbook_practice.domain;
 
 import com.example.umc_workbook_practice.domain.common.BaseEntity;
+import com.example.umc_workbook_practice.domain.mapping.MissionAccomplish;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,6 +30,15 @@ public class Mission extends BaseEntity {
 
     @Column(nullable = false)
     private int point;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
+
+    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
+    private List<MissionAccomplish> missionAccomplishList = new ArrayList<>();
+
 
 
 }

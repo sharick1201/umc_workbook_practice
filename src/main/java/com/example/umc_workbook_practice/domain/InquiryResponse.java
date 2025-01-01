@@ -18,4 +18,7 @@ public class InquiryResponse extends BaseEntity {
     @Column(nullable = false, length = 1000)
     private String content;
 
+    @OneToOne(mappedBy = "inquiryResponse", cascade = CascadeType.ALL)
+    private Inquiry inquiry;
+
 }

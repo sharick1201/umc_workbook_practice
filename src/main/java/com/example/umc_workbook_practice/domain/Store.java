@@ -1,8 +1,13 @@
 package com.example.umc_workbook_practice.domain;
 
 import com.example.umc_workbook_practice.domain.common.BaseEntity;
+import com.example.umc_workbook_practice.domain.mapping.MissionAccomplish;
+import com.example.umc_workbook_practice.domain.mapping.StoreFoodCategory;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,4 +22,13 @@ public class Store extends BaseEntity {
 
     @Column(nullable = false, length = 50)
     private String name;
+
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Mission> missionList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<StoreFoodCategory> storeFoodCategoryList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Review> reviewList = new ArrayList<>();
 }

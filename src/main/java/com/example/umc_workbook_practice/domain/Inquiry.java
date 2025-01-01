@@ -26,4 +26,11 @@ public class Inquiry extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(20)")
     private InquiryCategory inquiryCategory;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @OneToOne
+    @JoinColumn(name = "inquiry_response_id")
+    private InquiryResponse inquiryResponse;
 }

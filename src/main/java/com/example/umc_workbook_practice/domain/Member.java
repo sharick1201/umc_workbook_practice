@@ -3,10 +3,14 @@ package com.example.umc_workbook_practice.domain;
 import com.example.umc_workbook_practice.domain.common.BaseEntity;
 import com.example.umc_workbook_practice.domain.enums.Gender;
 import com.example.umc_workbook_practice.domain.enums.MemberStatus;
+import com.example.umc_workbook_practice.domain.mapping.MemberPreference;
+import com.example.umc_workbook_practice.domain.mapping.MissionAccomplish;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -42,5 +46,16 @@ public class Member extends BaseEntity {
     private MemberStatus Memberstatus;
 
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<MemberPreference> memberPreferenceList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<MissionAccomplish> missionAccomplishList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Inquiry> inquiryList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Review> reviewList = new ArrayList<>();
 
 }
