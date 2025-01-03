@@ -18,6 +18,9 @@ public class Review extends BaseEntity {
     @Column(nullable = false)
     private Boolean isLocked;
 
+    @Column(nullable = false)
+    private int score;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
